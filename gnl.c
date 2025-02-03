@@ -126,6 +126,8 @@ void update_stash(char *stash)
 char *get_next_line(int fd)
 {
   // error checking
+  if (fd < 0 || BUFFER_SIZE <= 0)
+    return NULL;
   static char stash[BUFFER_SIZE + 1];
   char *line = NULL;
 
@@ -144,7 +146,10 @@ char *get_next_line(int fd)
     update_stash(stash);
     int bytes_read = read(fd,stash,BUFFER_SIZE);
     if (bytes_read == -1)
+    {
+      free(line);
       return NULL;
+    }
     if (bytes_read == 0)
     {
       if (line[0] == '\0')
@@ -162,7 +167,7 @@ int main()
 {
   int fd = open("file.txt",O_RDONLY);
   char *line;
-  int i = 23;
+  int i = 16;
   while(i)
   {
     line = get_next_line(fd);
