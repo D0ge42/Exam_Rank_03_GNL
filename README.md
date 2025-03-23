@@ -1,4 +1,4 @@
-# get_next_line - Exam Rank 03
+# Fast and easy way to do get_next_line - Exam Rank 03
 
 This repository provides a simple and efficient implementation of the **get_next_line** function for **Exam Rank 03**. The approach is designed to be easy to understand, using only fundamental functions that 42 students are already familiar with.
 
